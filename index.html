@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="poleapp">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>POLE Assignment</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/logo-nav.css" rel="stylesheet">
+
+    
+</head>
+
+<body ng-controller="polecontroller as pole" ng-init="pole.loaddata()">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:darkred" >
+        <div class="container">
+           
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="background-color:darkred">
+            <Strong><h5 style="color:white">Pole-Admin Panel</h5></Strong>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">SPARKS</a>
+                    </li>
+                    <li>
+                        <a href="#">USERS</a>
+                    </li>
+                    <li>
+                        <a href="#">NOTIFICATIONS</a>
+                    </li>
+                    <li>
+                        <a href="#">SCHEDULING</a>
+                    </li>
+                    <li>
+                        <a href="#">PARTNERS</a>
+                    </li>
+                    <li>
+                        <a href="#">EVENTS</a>
+                    </li>
+                    <li>
+                        <a href="#">ADMINS</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+            <div class="well well-sm" style="margin:10%"><div style="background-color:silver"><h1>{{pole.object.store.name}} <i class="fa fa-pencil" aria-hidden="true"></i> </h1> <img class="pull-right img-responsive" style="border-radius:50%" ng-src="{{pole.object.store.image}}"></div><p>{{pole.object.store.store_type}}</p></br><p>{{pole.object.store.formatted_address}}</p></br><p>{{pole.object.store.description}}</p></div></div>
+             <div class="col-lg-5">
+            <div class="well well-sm" style="margin:10%"><p><ng-map zoom="15" center="[{{pole.object.store.location[1]}}, {{pole.object.store.location[0]}}]">
+  <marker position="[{{pole.object.store.location[1]}}, {{pole.object.store.location[0]}}]" />
+  <shape name="circle" radius="400" center="[{{pole.object.store.location[1]}}, {{pole.object.store.location[0]}}]" radius="4000" />
+  <control name="overviewMap" opened="true" />
+</ng-map>`</p></div></div>
+                
+                
+            </div>
+            <div class="row">
+            <div class="col-lg-10">
+            <div class="well well-sm">
+            <div class="row" style="background-color:white">
+            <div class="  col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>ADMIN</p></div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>TYPE</p></div>
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>NAME</p></div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>SHORTNAME</p></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>ACTIONS</p></div>
+                </div>
+                <div class="row" ng-repeat="array in pole.object.store_admins">
+                <div class="  col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>{{array.login_id}}</p></div>
+             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>{{array.type}}</p></div>
+              <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>{{array.name}}</p></div>
+               <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p>{{array.short_name}}</p></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"><p><i class="fa fa-sort-desc" aria-hidden="true"></i> <i class="fa fa-trash-o btn-danger" aria-hidden="true"></i>
+                </div>
+            </div></div>
+            </div>
+        </div>
+    
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="vendor\font-awesome\css\font-awesome.min.css"/>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+    <script type="text/javascript" src="app.js"></script>
+    
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script src="ng-map.min.js"></script>`
+
+</body>
+
+</html>
